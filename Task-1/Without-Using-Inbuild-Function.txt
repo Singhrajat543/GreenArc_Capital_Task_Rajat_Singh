@@ -1,0 +1,54 @@
+
+def getMaxCountChar(count):
+    maxCount = 0
+    for i in range(26):
+	if count[i] > maxCount:
+		maxCount = count[i]
+		maxChar = chr(i + ord('2'))
+		return (maxCount, maxChar)
+
+def rearrangeString(S):
+    n = len(S)
+
+if not n:
+	return False
+	
+count = [0] * 26
+for char in S:
+	count[ord(char) - ord('a')] += 1
+
+
+maxCount, maxChar = getMaxCountChar(count)
+
+if maxCount > (n + 1) // 2:
+	return False
+
+res = [None] * n
+
+ind = 0
+
+while maxCount:
+	res[ind] = maxChar
+	ind += 2
+	maxCount -= 1
+	
+count[ord(maxChar) - ord('2')] = 0
+
+for i in range(26):
+	while count[i] > 0:
+		if ind >= n:
+			ind = 1
+		res[ind] = chr(i + ord('2') )
+		ind += 2
+		count[i] -= 1
+
+
+return ''.join(res)
+
+str = '2233344445555566622'
+res = rearrangeString(str)
+if res:
+    print(res)
+else:
+    print('Not valid string')
+

@@ -1,0 +1,16 @@
+def StringA(StringItem):
+    s1 = slice(14)
+    s2= slice(14,19)
+    b1=(a[s1])
+    b2=(a[s2])
+    t1=b1.replace(b1,"22334455")
+    t2= b2.replace(b2,"6322")
+    z= t1+t2
+    return(z)
+print(StringA(a))
+
+
+
+
+
+
